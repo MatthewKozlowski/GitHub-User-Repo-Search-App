@@ -1,8 +1,12 @@
+function displayUserRepos(data){
+    console.log(data);
+}
+
 function getUserRepos(userInput){
-    fetch(`https://github.com//users/${userInput}/repos`)
+    fetch(`https://api.github.com/users/${userInput}/repos`)
     .then(response => response.json())
-    .then(response => displayUserRepos(responseJson))
-    .catch(error => alert('Something went wrong. Try again later. '));
+    .then(responseJson => displayUserRepos(responseJson))
+    .catch(error => console.log(error));
 }
 
 function watchForm(){
