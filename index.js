@@ -1,5 +1,14 @@
-function displayUserRepos(data){
-    console.log(data);
+function displayUserRepos(responseJson){
+        console.log(responseJson);
+        $('.userName').remove();
+        $('ul').remove();
+        let responseArray = [];
+        responseArray = responseJson;
+        $('.results').append(`<h1 class="userName">User: ${responseArray[0].owner.login}</h1>`);
+        $('.results').removeClass('hidden');
+        for(let i = 0; responseArray.length; i++){
+            $('.results').append(`<ul><li>${responseArray[i].name}</li><li><a href="${responseArray[i].owner.html_url}">${responseArray[i].owner.html_url}</a>`)
+        }
 }
 
 function getUserRepos(userInput){
